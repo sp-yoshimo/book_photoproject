@@ -1,0 +1,16 @@
+<!--ベーステンプレートを適用-->
+{% extends 'base.html' %}
+
+{% block title %}
+  Yoshimo Gallery
+{% endblock title %}
+
+{% block contents %}
+  <!--タイトルテンプレートの読み込み-->
+  {% include 'photos_title.html' %}
+
+  <!--投稿一覧テンプレートの読み込み-->
+  {% include 'photos_list.html' %}
+  <!--ページネーションの読み込み-->
+  {% include 'pagination.html' %}
+{% endblock contents %}

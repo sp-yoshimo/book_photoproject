@@ -1,0 +1,43 @@
+<!--ページネーションのアイコンを左右中央に配置-->
+<ul class="pagination" style="justify-content: center;">
+
+    <!--前ページの表示-->
+    
+    <!--Page.has_previous:直前にページがある場合Trueを返す-->
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a href="?page={{page_obj.previous_page_number}}" aria-label="Previous" class="page-link">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+    {% endif %}
+    
+    <!--
+        すべてのページについてのページ番号のアイコンを表示。paginator:page_range:[1,2,3,4]のように1から始まるページ番号を返す
+    -->
+    
+    {% for num in page_obj.paginator.page_range %}
+        <!--各ページのアイコン出力-->
+        {% if page_obj.number == num %}
+            
+            <!--処理中のページ番号が引き渡されたページのページ番号と一致する場合はアクティブ状態-->
+            <li class="page-item active">
+                <span class="page-link">{{num}}</span>
+            </li>
+        {% else %}
+            <!--ページ番号が引き渡されたページのページ番号と一致しない場合-->
+            <li class="page-item">
+                <a class="page-link" href="?page={{num}}">{{num}}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+        
+    <!--直後にページがあるか-->
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a href="?page={{page_obj.next_page_number}}" aria-label="Next" class="page-link">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+    {% endif %}
+</ul>

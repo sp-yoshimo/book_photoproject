@@ -1,0 +1,21 @@
+<!--ベーステンプレートを適用-->
+{% extends 'base.html' %}
+
+{% block title %}
+    Log out
+{% endblock title %}
+    
+
+{% block contents %}
+<br><br><br><br>
+    <div class="container">
+        <siv class="row">
+            <div class="col offset-4 py-4">
+                <h3>ログアウトしました</h3>
+
+                <p><a href="{% url "photo:index" %}">トップページ</a></p>
+            </div>
+        </siv>
+    </div>
+{% endblock contents %}
+    
